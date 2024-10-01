@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_users_view_form" model="ir.ui.view">
+        <field name="name">res.users.view.form</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form_simple_modif"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[last()]/group[last()]" position="after">
+                <group string="Webauthn" name="webauthn">
+                    <div class="text-muted" colspan="2">
+                        Webauthn keys replace your password for authentication.
+                    </div>
+                    <field name="webauthn_key_ids" nolabel="1" colspan="2"
+                           attrs="{'invisible': [('webauthn_key_ids', '=', [])]}"/>
+                    <div colspan="2">
+                        <button name="action_create_webauthn_key" string="New Webauthn Key" type="object" class="btn btn-secondary"/>
+                    </div>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>
